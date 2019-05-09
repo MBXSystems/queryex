@@ -2,15 +2,16 @@ defmodule QueryEx.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :queryex,
-     version: "0.1.0",
-     elixir: "~> 1.6",
-     deps: deps(),
-     elixirc_paths: elixirc_paths(Mix.env),
-     package: package(),
-     aliases: aliases(),
-     name: "QueryEx",
-     source_url: "https://github.com/markglenn/queryex"
+    [
+      app: :queryex,
+      version: "0.1.1",
+      elixir: "~> 1.6",
+      deps: deps(),
+      elixirc_paths: elixirc_paths(Mix.env()),
+      package: package(),
+      aliases: aliases(),
+      name: "QueryEx",
+      source_url: "https://github.com/markglenn/queryex"
     ]
   end
 
@@ -31,22 +32,25 @@ defmodule QueryEx.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:ecto, "~> 2.2"},
-     {:postgrex, ">= 0.0.0", only: [:test]},
-     {:ex_machina, "~> 2.2", only: [:test]},
-     {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false},
-     {:ex_doc, "~> 0.16", only: :dev, runtime: false}
+    [
+      {:ecto, "~> 2.2"},
+      {:postgrex, ">= 0.0.0", only: [:test]},
+      {:ex_machina, "~> 2.2", only: [:test]},
+      {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.16", only: :dev, runtime: false}
     ]
   end
 
   defp package do
-    [contributors: ["Mark Glenn"],
-     licenses: ["MIT"],
-     links: %{"GitHub" => "https://github.com/markglenn/queryex"}]
+    [
+      contributors: ["Mark Glenn"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/markglenn/queryex"}
+    ]
   end
 
   defp aliases do
-    ["test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+    [test: ["ecto.create --quiet", "ecto.migrate", "test"]]
   end
 
   defp elixirc_paths(:test), do: ["lib", "test/dummy", "test/support"]
